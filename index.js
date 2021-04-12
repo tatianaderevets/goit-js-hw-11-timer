@@ -14,7 +14,14 @@ class CountdownTimer{
     hours: document.querySelector('[data-value="hours"]'),
     mins: document.querySelector('[data-value="mins"]'),
     secs: document.querySelector('[data-value="secs"]'),
-}
+        }
+
+        const saveSettings = (days, hours, mins, secs) => {
+            refs.days.textContent = days;
+            refs.hours.textContent = hours;
+            refs.mins.textContent = mins;
+            refs.secs.textContent = secs;
+        }
         setInterval(() => {
         const currentDate = Date.now()
         const time = this.targetDate - currentDate;
@@ -22,13 +29,8 @@ class CountdownTimer{
         const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const mins = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
         const secs = Math.floor((time % (1000 * 60)) / 1000);
-            refs.days.textContent = days;
-            refs.hours.textContent = hours;
-            refs.mins.textContent = mins;
-            refs.secs.textContent = secs;
-            
-        
-          console.log(days,hours,mins,secs);
+        saveSettings(days, hours, mins, secs)
+                 
   
         }, 1000);
         
